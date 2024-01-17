@@ -66,6 +66,4 @@ module UnifonicIntegration
     end
 
   end
-
-  end
 end
