@@ -56,7 +56,7 @@ module UnifonicIntegration
       @params.merge!(TimeScheduled: time_scheduled)
     end
 
-    def set_message_params()
+    def set_message_params(body, recipient)
       @params = {
         AppSid: @config.app_sid,
         SenderID: @config.sender_id,
