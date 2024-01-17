@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ rails generate unifonic_integration:install
 
 ## Development
 
