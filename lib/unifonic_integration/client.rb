@@ -10,7 +10,7 @@ module UnifonicIntegration
     attr_accessor :config
 
     def initialize
-      @config = Configuration.new
+      @config = UnifonicIntegration.configuration
     end
 
     def send_message(body, recipient)
