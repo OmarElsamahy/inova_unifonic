@@ -25,6 +25,7 @@ module UnifonicIntegration
       set_message_params(body, recipient)
       response = self.class.post(endpoint, headers: @headers, body: @params)
       puts response.body
+      return response.body
     end
 
     def validate_recipient(recipient)
@@ -43,6 +44,7 @@ module UnifonicIntegration
       set_scheduled_message_params(body, recipient, time_scheduled)
       response = self.class.post(endpoint, headers: @headers, body: @params)
       puts response.body
+      return response.body
     end
 
     def set_headers
@@ -64,6 +66,5 @@ module UnifonicIntegration
         Recipient: recipient
       }
     end
-
   end
 end
