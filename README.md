@@ -22,7 +22,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ rails generate unifonic_integration:install
+
+This Will create a file in config/initializers/unifonic_integration.rb, Edit this file to set your configrations
+    
+    $ UnifonicIntegration.configure do |config|
+        config.app_sid = UNIFONIC_APP_SID 
+        config.sender_id = UNIFONIC_SENDER_ID 
+      end 
 
 ## Development
 
