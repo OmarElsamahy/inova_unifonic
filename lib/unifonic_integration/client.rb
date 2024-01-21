@@ -60,10 +60,10 @@ module UnifonicIntegration
 
     def validate_configuration
       return if @config.app_sid && @config.sender_id
+
       raise ConfigurationError, "UnifonicIntegration gem not properly configured. Please set app_sid and sender_id."
     end
   end
 
   class ConfigurationError < StandardError; end
-
 end

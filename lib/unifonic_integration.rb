@@ -6,6 +6,7 @@ require_relative "unifonic_integration/version"
 require_relative "unifonic_integration/client"
 require_relative "unifonic_integration/configuration"
 
+# The module is for integrating with Unifonic API to send scheduled and non-scheduled SMS.
 module UnifonicIntegration
   class Error < StandardError; end
 
@@ -17,5 +18,4 @@ module UnifonicIntegration
     self.configuration ||= Configuration.new
     yield(configuration)
   end
-
 end
