@@ -27,7 +27,7 @@ module UnifonicIntegration
 
     def validate_recipient(recipient)
       if recipient.to_s.start_with?("+", "00")
-        raise ArgumentError, "Phone number should not start with "+" or "00"."
+        raise ArgumentError, "Phone number should not start with + or 00."
       end
     end
 
