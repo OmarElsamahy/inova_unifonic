@@ -11,15 +11,11 @@ module UnifonicIntegration
 
     def initialize
       @config = UnifonicIntegration.configuration
+      validate_configuration
     end
 
     def send_message(body, recipient)
-
-      unless validate_recipient(recipient)
-        puts "Invalid recipient phone number format. Please provide a valid international format."
-        return
-      end
-
+      validate_recipient(recipient)
       endpoint = '/messages?async=false'
       set_headers
       set_message_params(body, recipient)
@@ -29,16 +25,13 @@ module UnifonicIntegration
     end
 
     def validate_recipient(recipient)
-      cleaned_number = recipient.to_s.gsub(/^(\+|00)/, '')
-      cleaned_number =~ /\A\d+\z/
+      if recipient.to_s.start_with?('+', '00')
+        raise ArgumentError, "Phone number should not start with '+' or '00'."
+      end
     end
 
     def send_scheduled_message(body, recipient, time_scheduled)
-      unless validate_recipient(recipient)
-        puts "Invalid recipient phone number format. Please provide a valid international format."
-        return
-      end
-
+      validate_recipient(recipient)
       endpoint = '/messages/scheduledmessages?async=false'
       set_headers
       set_scheduled_message_params(body, recipient, time_scheduled)
@@ -66,5 +59,13 @@ module UnifonicIntegration
         Recipient: recipient
       }
     end
+    def validate_configuration
+      unless @config.app_sid && @config.sender_id
+        raise ConfigurationError, "UnifonicIntegration gem not properly configured. Please set app_sid and sender_id."
+      end
+    end
   end
+
+class ConfigurationError < StandardError; end
+
 end
