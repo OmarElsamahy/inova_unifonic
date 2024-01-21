@@ -9,3 +9,13 @@
 
 # rspec failure tracking
 .rspec_status
+# Ignore gem artifacts
+*.gem
+
+# Ignore build directories
+/pkg/
+/.bundle/
+
+# Ignore any other generated or temporary files
+.DS_Store
+Thumbs.db
