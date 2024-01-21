@@ -2,6 +2,7 @@
 
 module UnifonicIntegration
   class Configuration
+    # The `Configuration` class provides an interface for setting up credentials for the Unifonic API.
     attr_accessor :app_sid, :sender_id
 
     def initialize

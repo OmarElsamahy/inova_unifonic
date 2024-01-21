@@ -26,9 +26,7 @@ module UnifonicIntegration
     end
 
     def validate_recipient(recipient)
-      if recipient.to_s.start_with?("+", "00")
-        raise ArgumentError, "Phone number should not start with + or 00."
-      end
+      raise ArgumentError, "Phone number should not start with + or 00." if recipient.to_s.start_with?("+", "00")
     end
 
     def send_scheduled_message(body, recipient, time_scheduled)
@@ -61,9 +59,8 @@ module UnifonicIntegration
     end
 
     def validate_configuration
-      unless @config.app_sid && @config.sender_id
-        raise ConfigurationError, "UnifonicIntegration gem not properly configured. Please set app_sid and sender_id."
-      end
+      return if @config.app_sid && @config.sender_id
+      raise ConfigurationError, "UnifonicIntegration gem not properly configured. Please set app_sid and sender_id."
     end
   end
 
